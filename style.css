@@ -88,6 +88,13 @@ body {
 
 #key-clear {
     background-color: rgb(192, 45, 45);
+    grid-column-start: 5;
+    grid-row: 1 / span 2;
+}
+
+#key-equals {
+    grid-column-start: 5;
+    grid-row: 3 / span 2;
 }
 
 @media (max-width: 950px) {
