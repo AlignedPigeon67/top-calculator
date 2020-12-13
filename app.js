@@ -3,6 +3,7 @@ const keyOperators = document.querySelectorAll('.key-operator');
 const screen = document.querySelector('#screen');
 
 let screenText = '';
+let answerText = '';
 
 keyNums.forEach(e => {
     e.addEventListener('click', () => {
@@ -54,7 +55,11 @@ keyOperators.forEach(e => {
                 populateDisplay('/');
                 break;
             case 'key-equals':
-                populateDisplay('=');
+                answerText = operate(screenText);
+                clearScreen();
+                clearMemory();
+                populateDisplay(answerText);
+                clearMemory();
                 break;
             case 'key-clear':
                 clearScreen();
@@ -80,15 +85,24 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
-function operate(num1, operator, num2) {
+function operate(inputString) {
+    const inputArr = inputString.split(" ");
+    const num1 = parseFloat(inputArr[1]);
+    const operator = inputArr[2];
+    const num2 = parseFloat(inputArr[3]);
+
     switch (operator) {
-        case 'add':
+        case '+':
+            console.log('func is add');
             return add(num1, num2);
-        case 'subtract':
+        case '-':
+            console.log('func is subtract');
             return subtract(num1, num2);
-        case 'multiply':
+        case '*':
+            console.log('func is multiply');
             return multiply(num1, num2);
-        case 'divide':
+        case '/':
+            console.log('func is divide');
             return divide(num1, num2);
     }
 }
